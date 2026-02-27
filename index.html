@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Cifrado | Privacidad, Seguridad y Criptografía</title>
+    <meta name="description"
+        content="Portal oficial de Mundo Cifrado. Exploramos las fronteras de la ciberseguridad, privacidad digital y herramientas criptográficas soberanas.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        :root {
+            --bg-dark: #05070a;
+            --bg-card: rgba(15, 18, 25, 0.7);
+            --accent-main: #00f2ff;
+            --accent-sec: #7000ff;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glow: rgba(0, 242, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(0, 242, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(112, 0, 255, 0.03) 0%, transparent 50%);
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* --- Animations --- */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: var(--accent-main);
+            filter: blur(150px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .logo-placeholder {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent-main), var(--accent-sec));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--bg-dark);
+            box-shadow: 0 0 40px var(--glow);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        /* --- Social Links --- */
+        .social-bar {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .social-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-btn:hover {
+            border-color: var(--accent-main);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-btn i {
+            font-size: 1.5rem;
+        }
+
+        .social-btn.yt i {
+            color: #ff0000;
+        }
+
+        /* --- Projects Section --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            border-color: rgba(0, 242, 255, 0.4);
+            background: rgba(15, 18, 25, 0.9);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            color: var(--accent-main);
+        }
+
+        .project-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        .project-link {
+            align-self: flex-start;
+            color: var(--accent-main);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .project-link:hover {
+            gap: 0.8rem;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-sec);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .social-bar {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="logo-container">
+            <div class="logo-placeholder">
+                <i class="ph ph-fingerprint"></i>
+            </div>
+        </div>
+        <h1>MUNDO CIFRADO</h1>
+        <p>Expertos en privacidad digital y criptografía defensiva. Herramientas diseñadas para que los datos vuelvan a
+            ser solo tuyos.</p>
+
+        <div class="social-bar">
+            <a href="https://youtube.com/@Mundo_cifrado" target="_blank" class="social-btn yt">
+                <i class="ph ph-youtube-logo"></i>
+                <span>YouTube Channel</span>
+            </a>
+            <a href="https://github.com/mundocifrado" target="_blank" class="social-btn">
+                <i class="ph ph-github-logo"></i>
+                <span>Open Source</span>
+            </a>
+        </div>
+    </section>
+
+    <div class="section-title">
+        <h2>Nuestros Proyectos</h2>
+        <p style="color: var(--text-muted)">Herramientas de seguridad soberana desarrolladas por el equipo.</p>
+    </div>
+
+    <section class="projects-grid">
+        <!-- khipus Card -->
+        <div class="project-card">
+            <span class="badge">Disponible</span>
+            <div class="project-icon"><i class="ph ph-vault"></i></div>
+            <h3>khipus OS</h3>
+            <p>La bóveda criptográfica definitiva. Encripta archivos, notas y contraseñas de manera 100% offline con
+                seguridad de grado militar.</p>
+            <a href="/khipus/" class="project-link">
+                Ver Proyecto <i class="ph ph-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- Nebula Card (Placeholder) -->
+        <div class="project-card" style="opacity: 0.6; filter: grayscale(0.5);">
+            <span class="badge" style="background: #444;">Próximamente</span>
+            <div class="project-icon"><i class="ph ph-planet"></i></div>
+            <h3>Nebula OS</h3>
+            <p>Sistema operativo enfocado en la privacidad extrema y la seguridad por aislamiento. La evolución de la
+                computación segura.</p>
+            <span class="project-link" style="color: #666; cursor: default;">En desarrollo...</span>
+        </div>
+    </section>
+
+    <footer>
+        <span class="footer-logo">MUNDO CIFRADO</span>
+        <p>&copy; 2026 Mundo Cifrado. Protegiendo el conocimiento en la era digital.</p>
+    </footer>
+</body>
+
+</html>
